@@ -6,8 +6,8 @@ services:
     ports:
       - 9901:9901
       - 10000:10000
-    #volumes:
-    #  - ${PWD}/envoy.yaml:/etc/envoy/envoy.yaml
+    volumes:
+      - ${PWD}/envoy.yaml:/etc/envoy/envoy.yaml
 
   nginx:
     image: nginx:1.21.1-alpine
