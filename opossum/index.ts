@@ -9,6 +9,10 @@ async function slowEcho(message: string, waitSecond: number = 0) {
   return message
 }
 
+function logWithTime(message: string) {
+  console.log(`[${new Date().toLocaleTimeString()}] ${message}`)
+}
+
 async function main() {
   const options = {
     // If our function takes longer than timeout seconds, trigger a failure
@@ -22,16 +26,16 @@ async function main() {
   const breaker = new CircuitBreaker(slowEcho, options)
 
   breaker.on('timeout', () => {
-    console.log('timeout')
+    logWithTime('timeout')
   })
   breaker.on('open', () => {
-    console.log('open')
+    logWithTime('open')
   })
   breaker.on('halfOpen', () => {
-    console.log('halfOpen')
+    logWithTime('halfOpen')
   })
   breaker.on('close', () => {
-    console.log('close')
+    logWithTime('close')
   })
 
   // [0, 1, 2, ...]
@@ -39,15 +43,13 @@ async function main() {
 
   for (let i = 0; i < waitSeconds.length; i++) {
     const waitSecond = waitSeconds[i]
-    console.log(
-      `[${new Date().toLocaleTimeString()}] waitSecond = ${waitSecond}`
-    )
+    logWithTime(`waitSecond = ${waitSecond}`)
 
     try {
       const echoMessage = await breaker.fire('Hello!', waitSecond)
-      console.log(echoMessage)
+      logWithTime(echoMessage)
     } catch (e) {
-      console.log('error catched!!!')
+      logWithTime('error catched!!!')
     }
   }
 
