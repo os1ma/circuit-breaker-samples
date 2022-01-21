@@ -9,7 +9,12 @@ services:
     volumes:
       - '${PWD}/envoy.yaml:/etc/envoy/envoy.yaml'
     depends_on:
-      - nginx
+      - node
 
-  nginx:
-    image: nginx:1.21.1-alpine
+  node:
+    image: node:16.13.2-alpine
+    command: node index.js
+    ports:
+      - 3000:3000
+    volumes:
+      - '${PWD}/index.js:/index.js'

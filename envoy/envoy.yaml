@@ -47,10 +47,10 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      address: nginx
-                      port_value: 80
+                      address: node
+                      port_value: 3000
       circuit_breakers:
         thresholds:
-          max_connections: 5
-          max_requests: 5
-          max_pending_requests: 10
+          max_connections: 100
+          max_requests: 100
+          max_pending_requests: 1000
