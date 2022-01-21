@@ -49,3 +49,8 @@ static_resources:
                     socket_address:
                       address: nginx
                       port_value: 80
+      circuit_breakers:
+        thresholds:
+          max_connections: 5
+          max_requests: 5
+          max_pending_requests: 10

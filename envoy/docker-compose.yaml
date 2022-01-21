@@ -1,22 +1,6 @@
 version: '3'
 
 services:
-  vegeta:
-    image: peterevans/vegeta:6.9.1
-    command: |
-      sh -c "
-        sleep 1 \
-        && echo 'GET http://envoy:10000' \
-        | vegeta attack -rate=10 -duration=30s \
-        | tee results.bin \
-        | vegeta report
-      "
-    working_dir: /work
-    volumes:
-      - '${PWD}:/work'
-    depends_on:
-      - envoy
-
   envoy:
     image: envoyproxy/envoy:v1.21.0
     ports:
