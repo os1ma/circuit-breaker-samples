@@ -2,6 +2,13 @@
 
 [opossum](https://www.npmjs.com/package/opossum) のサンプルコード
 
+## 実行方法
+
+```console
+yarn install
+yarn start
+```
+
 ## その他のサーキットブレーカのライブラリについて
 
 他にも npm には
