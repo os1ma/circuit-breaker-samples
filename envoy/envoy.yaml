@@ -49,8 +49,8 @@ static_resources:
                     socket_address:
                       address: node
                       port_value: 3000
-      circuit_breakers:
-        thresholds:
-          max_connections: 100
-          max_requests: 100
-          max_pending_requests: 1000
+      #circuit_breakers:
+      #  thresholds:
+      #    max_connections: 100
+      #    max_requests: 100
+      #    max_pending_requests: 1000
